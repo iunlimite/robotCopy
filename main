@@ -1,0 +1,22 @@
+@echo off
+
+:: กำหนด path สำหรับต้นทาง
+set data=Z:\share
+
+:: กำหนด path สำหรับปลายทาง
+set drive=D:\66003%20-%20iPiyachan
+
+set folder=%Date:~-4,4%_%Date:~-10,2%_%Date:~-7,2%
+set backupcmd=xcopy /s /c /d /e /h /i /r /k /y
+
+echo ### Backing up directory...
+%backupcmd% "%data%" "%drive%\%folder%"
+
+:: สร้างโฟลเดอร์เก็บรายงานการอัปเดท
+rem mkdir ForUpdate
+
+:: ใส่วันที่และเวลาเสร็จสิ้นในการรายงานผล
+%backupcmd% "%data%" "%drive%\%folder%" > D:\66003 \%20- %20iPiyachan\readmeForUpdate.txt
+
+
+@echo Backup Complete
